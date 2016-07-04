@@ -1,0 +1,22 @@
+CLUSTAL FORMAT for T-COFFEE Version_11.00.8cbe486 [http://www.tcoffee.org] [MODE:  ], CPU=0.00 sec, SCORE=75, Nseq=4, Len=106 
+
+1aab_           GK------GDPKKPRGKMSSYAFFVQTSREEHKKKHPDASVNFSEFSKKC
+1j46_A          MQ------DRVK---RPMNAFIVWSRDQRRKMALENPRM--RNSEISKQL
+1k99_A          MKKLKKHPDFPK---KPLTPYFRFFMEKRAKYAKLHPEM--SNLDLTKIL
+2lef_A          M--------HIK---KPLNAFMLYMKEMRANVVAESTLK--ESAAINQIL
+                           *     :..:  :    * :     .        :.:  
+
+1aab_           SERWKTMSAKEKGKFEDMAKADKARYER-------EMKTYIP--------
+1j46_A          GYQWKMLTEAEKWPFFQEAQKLQAMHRE-------KYPNYKYRP---RRK
+1k99_A          SKKYKELPEKKKMKYIQDFQREKQEFERNLARFREDHPDLI---------
+2lef_A          GRRWHALSREEQAKYYELARKERQLHMQ-------LYPGWSARDNYGKKK
+                . ::: :.  ::  : :  :  :  . .                      
+
+1aab_           -PKG-E
+1j46_A          AKMLPK
+1k99_A          -QNAKK
+2lef_A          KRKREK
+                     :
+
+
+

@@ -1,0 +1,6 @@
+Archivo,Propossal Distance,simple,clustalw2,clustal omega,muscle
+BBS11030,773,-434,-8304,-8119,-7847
+Archivo,Propossal Distance,simple,clustalw2,clustal omega,muscle
+BBS11030,773,-434,-8304,-8119,-7847
+Archivo,Propossal Distance,simple,clustalw2,clustal omega,muscle
+BBS11030,773,-434,-8304,-8119,-7847

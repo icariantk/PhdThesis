@@ -1,0 +1,12 @@
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\x64\Release\SARELY.exe.config
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\x64\Release\SARELY.exe
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\x64\Release\SARELY.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\x64\Release\ManagedCuda.dll
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\x64\Release\NPP.dll
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\x64\Release\ManagedCuda.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\x64\Release\ManagedCuda.xml
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\x64\Release\NPP.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\x64\Release\NPP.xml
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\obj\x64\Release\SARELY.csprojResolveAssemblyReference.cache
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\obj\x64\Release\SARELY.exe
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\obj\x64\Release\SARELY.pdb

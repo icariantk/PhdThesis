@@ -1,0 +1,3 @@
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELI\SARELI\SARELI\bin\x64\Debug\SARELY.exe.config
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELI\SARELI\SARELI\obj\x64\Debug\SARELY.exe
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELI\SARELI\SARELI\obj\x64\Debug\SARELY.pdb

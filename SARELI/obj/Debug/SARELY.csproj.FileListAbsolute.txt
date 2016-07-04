@@ -1,0 +1,71 @@
+d:\mis documentos\visual studio 2013\Projects\SARELY\SARELY\bin\Debug\SARELY.exe.config
+d:\mis documentos\visual studio 2013\Projects\SARELY\SARELY\obj\Debug\SARELY.csprojResolveAssemblyReference.cache
+d:\mis documentos\visual studio 2013\Projects\SARELY\SARELY\bin\Debug\SARELY.exe
+d:\mis documentos\visual studio 2013\Projects\SARELY\SARELY\bin\Debug\SARELY.pdb
+d:\mis documentos\visual studio 2013\Projects\SARELY\SARELY\obj\Debug\SARELY.exe
+d:\mis documentos\visual studio 2013\Projects\SARELY\SARELY\obj\Debug\SARELY.pdb
+D:\Escritorio\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\SARELY.exe.config
+D:\Escritorio\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\obj\Debug\SARELY.exe
+D:\Escritorio\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\obj\Debug\SARELY.pdb
+D:\Escritorio\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\SARELY.exe
+D:\Escritorio\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\SARELY.pdb
+D:\Escritorio\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\obj\Debug\SARELY.csprojResolveAssemblyReference.cache
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\SARELY.exe.config
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\obj\Debug\SARELY.exe
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\obj\Debug\SARELY.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\SARELY.exe
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\SARELY.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\obj\Debug\SARELY.csprojResolveAssemblyReference.cache
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\ManagedCuda.dll
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\ManagedCuda.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\ManagedCuda.xml
+D:\Escritorio\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\ManagedCuda.pdb
+D:\Escritorio\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\ManagedCuda.xml
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\SARELY.exe.config
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\obj\Debug\SARELY.exe
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\obj\Debug\SARELY.pdb
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\SARELY.exe
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\SARELY.pdb
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\ManagedCuda.pdb
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\ManagedCuda.xml
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\obj\Debug\SARELY.csprojResolveAssemblyReference.cache
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\ManagedCuda.dll
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\NPP.dll
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\NPP.pdb
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\NPP.xml
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\NPP.dll
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\NPP.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\bin\Debug\NPP.xml
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\SARELY.exe.config
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\obj\Debug\SARELY.exe
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\obj\Debug\SARELY.pdb
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\SARELY.exe
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\SARELY.pdb
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\ManagedCuda.dll
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\NPP.dll
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\ManagedCuda.pdb
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\ManagedCuda.xml
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\NPP.pdb
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\NPP.xml
+d:\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\obj\Debug\SARELY.csprojResolveAssemblyReference.cache
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\SARELY.exe.config
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\SARELY.exe
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\SARELY.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\ManagedCuda.dll
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\NPP.dll
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\ManagedCuda.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\ManagedCuda.xml
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\NPP.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug\NPP.xml
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\obj\Debug\SARELY.exe
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\obj\Debug\SARELY.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\obj\Debug\SARELY.csprojResolveAssemblyReference.cache
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug2\SARELY.exe.config
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug2\SARELY.exe
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug2\SARELY.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug2\ManagedCuda.dll
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug2\NPP.dll
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug2\ManagedCuda.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug2\ManagedCuda.xml
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug2\NPP.pdb
+C:\Users\icarian.HPC\Desktop\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELY\SARELY\SARELY\bin\Debug2\NPP.xml
