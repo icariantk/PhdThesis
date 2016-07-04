@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>SARELI</title>
+    <authors>Ricardo Ortega Magaña</authors>
+    <owners>Ricardo Ortega Magaña</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This library should be used and enhanced as needed, send me an e-mail for questions.</description>
+    <copyright>Copyright 2016</copyright>
+    <tags>CUDA GPU "Sequence alignment" proteins UPGMA NJ "Neighbour joinning"</tags>
+  </metadata>
+</package>
