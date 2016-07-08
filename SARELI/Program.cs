@@ -482,8 +482,8 @@ namespace SARELI
                 average += locs[0][c];
             }
             average /= (double)n;
-            Console.WriteLine("Average del primer caracter: " + average);
-            Console.ReadKey();
+            //Console.WriteLine("Average del primer caracter: " + average);
+            //Console.ReadKey();
             return Seqs;
         }
 
@@ -1594,7 +1594,7 @@ namespace SARELI
                         }
                     }
                 }
-                Console.WriteLine("merge: " + headers[indexSmallestX] + " and " + headers[indexSmallestY]);
+                //Console.WriteLine("merge: " + headers[indexSmallestX] + " and " + headers[indexSmallestY]);
                 if (headers[indexSmallestX] >= NN)
                 {
                     if (headers[indexSmallestY] >= NN)
@@ -2320,7 +2320,7 @@ namespace SARELI
             }
             else
             {
-                Console.Write("Secuencia vacía encontrada");
+                Console.Write("Empty sequence. Check your input file.");
             }
             worker.removeGaps(x);
             worker.removeGaps(y);
@@ -2579,7 +2579,7 @@ namespace SARELI
             }
             else
             {
-                Console.Write("Secuancia vacía encontrada");
+                Console.Write("Empty sequence. Check your input file.");
             }
             return sum;
         }
@@ -2699,7 +2699,7 @@ namespace SARELI
                 }
                 else
                 {
-                    Console.Write("Empty sequence");
+                    Console.Write("Empty sequence. Check your input file.");
                 }
                 return totsum;
             }
@@ -2988,7 +2988,7 @@ namespace SARELI
             }
             else
             {
-                Console.Write("Empty sequence");
+                Console.Write("Empty sequence. Check your input file.");
             }
             return totsum;
         }
@@ -3340,7 +3340,7 @@ namespace SARELI
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("The file could not be read:");
+                    Console.WriteLine("There is a problem opening the file: ");
                     Console.WriteLine(e.Message);
                 }
             }
@@ -3618,10 +3618,6 @@ namespace SARELI
     /// </summary>
     internal class ZProgram
     {
-        public static void cudajoin(int k)
-        {
-            Console.WriteLine("Child thread starts");
-        }
 
         public static Dictionary<string, int> fill()
         {
@@ -6138,7 +6134,7 @@ namespace SARELI
 
             string tofile = "";
             string header = "filename\tNumber of Sequences\tAverage length\tStandar Deviation\tAverage Dist\tSD Dist";
-            Console.WriteLine(tofile);
+            //Console.WriteLine(tofile);
             for (int c = 0; c != args.Count(); c++)
             {
                 string file = "";
@@ -6165,8 +6161,8 @@ namespace SARELI
                         StreamWriter res = new StreamWriter(path2 + "\\ResultsAn.txt", true);
                         res.Write(header + "\n");
                         res.Write(tofile);
-                        Console.Write(header + "\n");
-                        Console.Write(tofile);
+                        //Console.Write(header + "\n");
+                        //Console.Write(tofile);
                         tofile = "";
                         res.Close();
                     }
@@ -6174,7 +6170,7 @@ namespace SARELI
                     {
                         StreamWriter res = new StreamWriter(path2 + "\\ResultsAn.txt", true);
                         res.Write(tofile);
-                        Console.Write(tofile);
+                        //Console.Write(tofile);
                         tofile = "";
                         res.Close();
                     }
@@ -6199,16 +6195,16 @@ namespace SARELI
             Console.WriteLine("     └────────────────────────────────────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("     ┌────────────────────────────────────────────────────────────────────────────────────────────────┐");
             Console.WriteLine("     │                                          Introduction                                          │");
-
-            //".MSF").ALN")".PAMSA") ".FAS"  ".TFA"  ".FASTA"
             Console.WriteLine("     ├────────────────────────────────────────────────────────────────────────────────────────────────┤");
-            Console.WriteLine("     │       This command line utility can perform different biological sequences tasks, like align,  │");
-            Console.WriteLine("     │     score, compare and generate statistics about the input files. Those files should be at     │");
-            Console.WriteLine("     │     least one, in any of the supported file formats (MSF, ALN, PAMSA, FAS, TFA, FASTA)         │");
-            Console.WriteLine("     │     selected by the operators will operate on the input file, the default output is a file in  │");
-            Console.WriteLine("     │     FASTA format, with the prefix SARELI_ on the name of the file, the best Radio for that     │");
-            Console.WriteLine("     │     file and the fasta extension (e.g. SARELI_ORIGINALFILENAME.FASTA). A statistic file can    │");
-            Console.WriteLine("     │     be an output when the -s option is active.                                                 │");
+            Console.WriteLine("     │       THIS COMMAND LINE UTILITY PERFORM DIFFERENT BIOLOGICAL SEQUENCES TASKS, LIKE ALIGN,      │");
+            Console.WriteLine("     │     SCORE, COMPARE AND GENERATE STATISTICS ABOUT INPUT SEQUENCE FILES. THOSE FILES SHOULD      │");
+            Console.WriteLine("     │     BE IN ANY OF THE SUPPORTED FILE FORMATS (MSF, ALN, PAMSA, FAS, TFA, FASTA)                 │");
+            Console.WriteLine("     │                                                                                                │");
+            Console.WriteLine("     │     THE DEFAULT OUTPUT IS A FILE IN FASTA FORMAT, WITH THE PREFIX SARELI_ ON THE NAME OF       │");
+            Console.WriteLine("     │     THE FILE, THE BEST RADIO FOR THAT FILE AND THE FASTA EXTENSION                             │");
+            Console.WriteLine("     │     (E.G. SARELI_3_ORIGINALFILENAME.FASTA).                                                    │");
+            Console.WriteLine("     │                                                                                                │");
+            Console.WriteLine("     │     A SCORE FILE CAN BE WRITTEN WHEN THE -S OPTION IS ACTIVE.                                  │");
             Console.WriteLine("     └────────────────────────────────────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("     ┌────────────────────────────────────────────────────────────────────────────────────────────────┐");
             Console.WriteLine("     │                                          Man page                                              │");
@@ -6442,7 +6438,7 @@ namespace SARELI
                         }
                         if (n < 1)
                         {
-                            Console.WriteLine("Cant fit in this card");
+                            Console.WriteLine("This sequence file cannot be processed in this graphic card with this software");
                             return 0;
                         }
 
@@ -6571,8 +6567,8 @@ namespace SARELI
                 header = header.Substring(0, header.Length - 1);
                 if (rFile.Length > 0)
                 {
-                    Console.WriteLine(header);
-                    Console.WriteLine(tofile);
+                    //Console.WriteLine(header);
+                    //Console.WriteLine(tofile);
                     if (!File.Exists(path2 + "\\" + rFile))
                     {
                         StreamWriter res = new StreamWriter(path2 + "\\" + rFile, true);
