@@ -6186,60 +6186,66 @@ namespace SARELI
             Console.WriteLine("                   ├───────────────────────────────────────────────────────────────────┤");
             Console.WriteLine("                   │                  Author: McS Ricardo Ortega Magaña                │");
             Console.WriteLine("                   ├───────────────────────────────────────────────────────────────────┤");
-            Console.WriteLine("                   │                Thesis advisor: Dr. Arturo Chavoya Peña            │");
+            Console.WriteLine("                   │                  Advisor: Dr. Arturo Chavoya Peña                 │");
+            Console.WriteLine("                   ├───────────────────────────────────────────────────────────────────┤");
+            Console.WriteLine("                   │                  MIT License, Copyright (c) 2016                  │");
+            Console.WriteLine("                   │                  Version:        1.11.00000                       │");
             Console.WriteLine("                   └───────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("     ┌────────────────────────────────────────────────────────────────────────────────────────────────┐");
-            Console.WriteLine("     │     Welcome to the multiple biological sequences alignment software implementation developed   │");
-            Console.WriteLine("     │   in the Department of information systems,  located at the Centro Universitario de Ciencias   │");
-            Console.WriteLine("     │   Económico Administrativas, University of Guadalajara, Zapopan, Jalisco, México               │");
+            Console.WriteLine("     │    WELCOME TO THE MULTIPLE SEQUENCE ALIGNMENT SOFTWARE IMPLEMENTATION FOR PROTEINS DEVELOPED   │");
+            Console.WriteLine("     │  IN THE DEPARTMENT OF INFORMATION SYSTEMS, LOCATED AT THE CENTRO UNIVERSITARIO DE CIENCIAS     │");
+            Console.WriteLine("     │  ECONÓMICO ADMINISTRATIVAS, UNIVERSIDAD DE GUADALAJARA, ZAPOPAN, JALISCO, MEXICO               │");
             Console.WriteLine("     └────────────────────────────────────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("     ┌────────────────────────────────────────────────────────────────────────────────────────────────┐");
-            Console.WriteLine("     │                                          Introduction                                          │");
+            Console.WriteLine("     │                                          INTRODUCTION                                          │");
             Console.WriteLine("     ├────────────────────────────────────────────────────────────────────────────────────────────────┤");
             Console.WriteLine("     │       THIS COMMAND LINE UTILITY PERFORM DIFFERENT BIOLOGICAL SEQUENCES TASKS, LIKE ALIGN,      │");
             Console.WriteLine("     │     SCORE, COMPARE AND GENERATE STATISTICS ABOUT INPUT SEQUENCE FILES. THOSE FILES SHOULD      │");
             Console.WriteLine("     │     BE IN ANY OF THE SUPPORTED FILE FORMATS (MSF, ALN, PAMSA, FAS, TFA, FASTA)                 │");
             Console.WriteLine("     │                                                                                                │");
-            Console.WriteLine("     │     THE DEFAULT OUTPUT IS A FILE IN FASTA FORMAT, WITH THE PREFIX SARELI_ ON THE NAME OF       │");
-            Console.WriteLine("     │     THE FILE, THE BEST RADIO FOR THAT FILE AND THE FASTA EXTENSION                             │");
-            Console.WriteLine("     │     (E.G. SARELI_3_ORIGINALFILENAME.FASTA).                                                    │");
+            Console.WriteLine("     │       THE DEFAULT OUTPUT IS A FILE IN FASTA FORMAT WHOSE NAME IS BUILT WITH THE PREFIX         │");
+            Console.WriteLine("     │     “SARELI_”,  FOLLOWED BY THE BEST RADIUS FOUND FOR THE FILE AND THE NAME OF THE ORIGINAL    │");
+            Console.WriteLine("     │     FILE WITH THE FASTA EXTENSION (E.G. SARELI_3_ORIGINALFILENAME.FASTA).                      │");
             Console.WriteLine("     │                                                                                                │");
-            Console.WriteLine("     │     A SCORE FILE CAN BE WRITTEN WHEN THE -S OPTION IS ACTIVE.                                  │");
+            Console.WriteLine("     │     A FILE WITH SCORES CAN BE OUTPUT WHEN THE -S OPTION IS SPECIFIED                           │");
             Console.WriteLine("     └────────────────────────────────────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("     ┌────────────────────────────────────────────────────────────────────────────────────────────────┐");
             Console.WriteLine("     │                                          Man page                                              │");
             Console.WriteLine("     ├────────────────────────────────────────────────────────────────────────────────────────────────┤");
-            Console.WriteLine("     │       Syntaxis:                                                                                │");
+            Console.WriteLine("     │       SYNTAX:                                                                                  │");
             Console.WriteLine("     │                                                                                                │");
-            Console.WriteLine("     │              SARELI -in file [options]                                                         │");
+            Console.WriteLine("     │              SARELI -in FILENAME [options]                                                     │");
             Console.WriteLine("     │                                                                                                │");
-            Console.WriteLine("     │       Options:                                                                                 │");
+            Console.WriteLine("     │       OPTIONS:                                                                                 │");
             Console.WriteLine("     │                                                                                                │");
             Console.WriteLine("     │              -t                                                                                │");
-            Console.WriteLine("     │                   Evaluate with Sum of Pairs and Column Score an alignment                     │");
-            Console.WriteLine("     │                   This parameter disables the alignment tools                                  │");
+            Console.WriteLine("     │                   EVALUATE AN ALIGNMENT WITH THE SUM OF PAIRS AND THE COLUMN SCORE.            │");
+            Console.WriteLine("     │                   THIS PARAMETER DISABLES THE ALIGNMENT TOOLS.                                 │");
             Console.WriteLine("     │                                                                                                │");
-            Console.WriteLine("     │              -s fileName                                                                       │");
-            Console.WriteLine("     │                   Name of the file to put the results in a CSV format, if is not provided      │");
-            Console.WriteLine("     │                 stdout is used only.                                                           │");
+            Console.WriteLine("     │              -s FILENAME                                                                       │");
+            Console.WriteLine("     │                   NAME OF THE FILE TO OUTPUT THE RESULTS IN A CSV (COMMA-SEPARATED VALUES)     │");
+            Console.WriteLine("     │                   FORMAT. IF NOT PROVIDED, STDOUT IS USED                                      │");
             Console.WriteLine("     │                                                                                                │");
             Console.WriteLine("     │              -r XX,YY                                                                          │");
-            Console.WriteLine("     │                   YY>XX This parameter search from radio XX to YY for the best alignment       │");
+            Console.WriteLine("     │                   THIS PARAMETER SEARCHES FROM RADIUS VALUE XX TO YY (WITH YY>XX )             │");
+            Console.WriteLine("     │                   FOR THE BEST ALIGNMENT                                                       │");
             Console.WriteLine("     │                                                                                                │");
             Console.WriteLine("     │              -r1 .XX                                                                           │");
-            Console.WriteLine("     │                   Threshold for first refinement method (.75 default)                          │");
+            Console.WriteLine("     │                   THRESHOLD VALUE FOR THE FIRST REFINEMENT METHOD                              │");
+            Console.WriteLine("     │                   (DEFAULTS TO .75 IF NOT PROVIDED)                                            │");
             Console.WriteLine("     │                                                                                                │");
             Console.WriteLine("     │              -r2 .XX                                                                           │");
-            Console.WriteLine("     │                   Threshold for second refinement method (.40 default)                         │");
+            Console.WriteLine("     │                   THRESHOLD VALUE FOR THE SECOND REFINEMENT METHOD                             │");
+            Console.WriteLine("     │                   (DEFAULTS TO .40 IF NOT PROVIDED)                                            │");
             Console.WriteLine("     │                                                                                                │");
-            Console.WriteLine("     │              -in filename                                                                      │");
-            Console.WriteLine("     │                   Path for the file with the protein sequences to align                        │");
+            Console.WriteLine("     │              -in FILENAME                                                                      │");
+            Console.WriteLine("     │                   PATH FOR THE FILE WITH THE PROTEIN SEQUENCES TO ALGIN                        │");
             Console.WriteLine("     │                                                                                                │");
             Console.WriteLine("     │              -ptx cudaKernel                                                                   │");
-            Console.WriteLine("     │                   Path for the cudaKernel file to use as accelerator                           │");
+            Console.WriteLine("     │                   PATH FOR THE CUDAKERNEL FILE TO USE AS ACCELERATOR                           │");
             Console.WriteLine("     │                                                                                                │");
             Console.WriteLine("     │              -i XX                                                                             │");
-            Console.WriteLine("     │                   Number of max iterations on the first refinement method                      │");
+            Console.WriteLine("     │                   MAXIMUM NUMBER OF ITERATIONS FOR THE FIRST REFINEMENT METHOD                 │");
             Console.WriteLine("     └────────────────────────────────────────────────────────────────────────────────────────────────┘\n\n");
             Console.ReadKey();
         }
@@ -6268,20 +6274,24 @@ namespace SARELI
             bool test = false;
             string cudaKernelFileName = "";
             arg = args.ToList<string>();
-
-            if (arg.Contains("-ptx"))
-            {
-                try
-                {
-                    cudaKernelFileName = arg[arg.IndexOf("-ptx") + 1];
-                    useCuda = true;
-                }
-                catch (Exception E)
-                {
-                    Help();
-                    return 0;
-                }
+            for (int c = 0; c != arg.Count; c++) {
+                arg[c] = arg[c].ToLower();
             }
+
+                if (arg.Contains("-ptx") || arg.Contains("-PTX"))
+                {
+
+                    try
+                    {
+                        cudaKernelFileName = arg[arg.IndexOf("-ptx") + 1];
+                        useCuda = true;
+                    }
+                    catch (Exception E)
+                    {
+                        Help();
+                        return 0;
+                    }
+                }
             int firstRadious = 3;
             int lastRadious = 4;
 

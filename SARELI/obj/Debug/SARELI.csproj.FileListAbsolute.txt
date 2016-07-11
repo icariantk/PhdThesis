@@ -51,3 +51,4 @@ D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELI\SARELI\S
 D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELI\SARELI\SARELI\bin\Debug\NVRTC.xml
 D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELI\SARELI\SARELI\obj\Debug\SARELI.exe
 D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELI\SARELI\SARELI\obj\Debug\SARELI.pdb
+D:\Icarian\Dropbox\Mis Documentos\Mis Documentos\Doctorado\Tesis\SARELI\SARELI\SARELI\obj\Debug\SARELI.csprojResolveAssemblyReference.cache
