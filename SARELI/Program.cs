@@ -6211,10 +6211,12 @@ namespace SARELI
             Console.WriteLine("  │       FOR A DESCRIPTION OF ALL THE OPTIONS, SEE THE MAN PAGE SECTION     │");
             Console.WriteLine("  │     BELOW.                                                               │");
             Console.WriteLine("  │                                                                          │");
-            Console.WriteLine("  │       THE DEFAULT OUTPUT IS A FILE IN FASTA FORMAT WHOSE NAME IS BUILT   │");
-            Console.WriteLine("  │     WITH THE PREFIX “SARELI_”,  FOLLOWED BY THE BEST RADIUS FOUND FOR    │");
-            Console.WriteLine("  │     THE FILE AND THE NAME OF THE ORIGINAL FILE WITH THE FASTA EXTENSION  │");
-            Console.WriteLine("  │     (E.G. SARELI_3_ORIGINALFILENAME.FASTA).                              │");
+            Console.WriteLine("  │       THE DEFAULT OUTPUT ARE TWO FILES IN FASTA FORMAT WHOSE NAME ARE    │");
+            Console.WriteLine("  │     BUILT WITH THE PREFIX “SARELI_”, AFTER THAT, “MAXCS_” OR “MAXSP_”    │");
+            Console.WriteLine("  │     EACH STORE THE BEST SCORE POR COLUMN SCORE, AND SUM OF PAIRS         │");
+            Console.WriteLine("  │     RESPECTIVELY FOLLOWED BY THE BEST RADIUS FOUND FOR THE FILE          │");
+            Console.WriteLine("  │     AND THE NAME OF THE ORIGINAL FILE WITH THE FASTA EXTENSION           │");
+            Console.WriteLine("  │     (E.G. SARELI_MaxCS_R3_ORIGINALFILENAME.FASTA).                       │");
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  └──────────────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("  ┌──────────────────────────────────────────────────────────────────────────┐");
