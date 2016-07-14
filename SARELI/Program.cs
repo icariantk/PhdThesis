@@ -6211,13 +6211,17 @@ namespace SARELI
             Console.WriteLine("  │       FOR A DESCRIPTION OF ALL THE OPTIONS, SEE THE MAN PAGE SECTION     │");
             Console.WriteLine("  │     BELOW.                                                               │");
             Console.WriteLine("  │                                                                          │");
-            Console.WriteLine("  │       THE DEFAULT OUTPUT ARE TWO FILES IN FASTA FORMAT WHOSE NAME ARE    │");
-            Console.WriteLine("  │     BUILT WITH THE PREFIX “SARELI_”, AFTER THAT, “MAXCS_” OR “MAXSP_”    │");
-            Console.WriteLine("  │     EACH STORE THE BEST SCORE POR COLUMN SCORE, AND SUM OF PAIRS         │");
-            Console.WriteLine("  │     RESPECTIVELY FOLLOWED BY THE BEST RADIUS FOUND FOR THE FILE          │");
-            Console.WriteLine("  │     AND THE NAME OF THE ORIGINAL FILE WITH THE FASTA EXTENSION           │");
-            Console.WriteLine("  │     (E.G. SARELI_MaxCS_R3_ORIGINALFILENAME.FASTA).                       │");
+            Console.WriteLine("  │       THE DEFAULT OUTPUT IS A FILE IN FASTA FORMAT WITH THE ALIGNMENT    │");
+            Console.WriteLine("  │     CORRESPONGING TO THE HIGHEST COLUMN SCORE FOUND. THE NAME OF THE     │");
+            Console.WriteLine("  │     OUTPUT FILE IS AUTOMATICALLY GENERATED STARTING WITH THE PREFIX      │");
+            Console.WriteLine("  │     “SARELI_MaxCS_”, FOLLOWED BY \"R\" AND THE BEST RADIOUS FOUND FOR      │");
+            Console.WriteLine("  │     THE RANGE PROVIDED, AND ENDING WITH THE NAME OF THE ORIGINAL FILE    │");
+            Console.WriteLine("  │     WITH THE FASTA EXTENSION                                             │");
+            Console.WriteLine("  │     (e.g. Sareli_MaxCS_R3_originalfilename.fasta).                       │");
             Console.WriteLine("  │                                                                          │");
+            Console.WriteLine("  │        OPTIONALLY, A FILE WITH THE HIGHEST SUM OF PAIRS SCORE CAN ALSO   │");
+            Console.WriteLine("  │     BE OUTPUT BY SPECIFYING THE -sp FLAG. IN BOTH CASES, A FILE WITH     │");
+            Console.WriteLine("  │     SCORES CAN BE OUTPUT WHEN THE -s OPTION IS SPECIFIED.                │");
             Console.WriteLine("  └──────────────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("  ┌──────────────────────────────────────────────────────────────────────────┐");
             Console.WriteLine("  │                                Man page                                  │");
@@ -6254,6 +6258,10 @@ namespace SARELI
             Console.WriteLine("  │              -in FILENAME                                                │");
             Console.WriteLine("  │                   PATH FOR THE FILE WITH THE PROTEIN SEQUENCES TO ALIGN. │");
             Console.WriteLine("  │                                                                          │");
+            Console.WriteLine("  │              -SP                                                         │");
+            Console.WriteLine("  │                   OUTPUT A FILE WITH THE HIGHEST SUM OF PAIRS SCORE      │");
+            Console.WriteLine("  │                   ALIGNMENT                                              │");
+            Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │              -ptx cudaKernel                                             │");
             Console.WriteLine("  │                   PATH FOR THE CUDAKERNEL FILE TO USE AS ACCELERATOR.    │");
             Console.WriteLine("  │                                                                          │");
@@ -6284,6 +6292,7 @@ namespace SARELI
             string rFile = ""; //Output file (-s option)
             double r1 = 0;   //First refinement threshold (-r1 option)
             double r2 = 0;   //First refinement threshold (-r1 option)
+            bool sp = false;
             bool useCuda = false;
             bool test = false;
             string cudaKernelFileName = "";
@@ -6292,7 +6301,7 @@ namespace SARELI
                 arg[c] = arg[c].ToLower();
             }
 
-                if (arg.Contains("-ptx") || arg.Contains("-PTX"))
+                if (arg.Contains("-ptx"))
                 {
 
                     try
@@ -6321,6 +6330,10 @@ namespace SARELI
                     Help();
                     return 0;
                 }
+            }
+            if (arg.Contains("-sp"))
+            {
+                sp = true;
             }
 
             if (arg.Contains("-in"))
@@ -6557,7 +6570,9 @@ namespace SARELI
                     tech = "ser";
                 }
                 NHT_2[maxRCS - 3].print(0, -1, false, "Sareli_MaxCS_R" + maxRCS + "_" + file + "_" + tech + ".fasta");
+                if (sp) { 
                 NHT_2[maxRSP - 3].print(0, -1, false, "Sareli_MaxSP_R" + maxRSP + "_" + file + "_" + tech + ".fasta");
+                }
                 tofile = tofile.Substring(0, tofile.Length - 1);
                 if (rFile.Length > 0)
                     if (!File.Exists(path2 + "\\" + rFile))
