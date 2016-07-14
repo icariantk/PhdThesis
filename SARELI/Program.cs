@@ -6190,7 +6190,7 @@ namespace SARELI
             Console.WriteLine("     │                  Advisor: Dr. Arturo Chavoya Peña                 │     ");
             Console.WriteLine("     ├───────────────────────────────────────────────────────────────────┤     ");
             Console.WriteLine("     │                  MIT License, Copyright (c) 2016                  │     ");
-            Console.WriteLine("     │                  Version:        1.11.00001                       │     ");
+            Console.WriteLine("     │                  Version:        1.11.00002                       │     ");
             Console.WriteLine("     └───────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("  ┌──────────────────────────────────────────────────────────────────────────┐");
             Console.WriteLine("  │    WELCOME TO THE MULTIPLE SEQUENCE ALIGNMENT SOFTWARE IMPLEMENTATION    │");
@@ -6569,9 +6569,9 @@ namespace SARELI
                 {
                     tech = "ser";
                 }
-                NHT_2[maxRCS - 3].print(0, -1, false, "Sareli_MaxCS_R" + maxRCS + "_" + file + "_" + tech + ".fasta");
+                NHT_2[maxRCS - 3].print(0, -1, false, "Sareli_MaxCS_R" + maxRCS + "_" + file +".fasta");
                 if (sp) { 
-                NHT_2[maxRSP - 3].print(0, -1, false, "Sareli_MaxSP_R" + maxRSP + "_" + file + "_" + tech + ".fasta");
+                NHT_2[maxRSP - 3].print(0, -1, false, "Sareli_MaxSP_R" + maxRSP + "_" + file +".fasta");
                 }
                 tofile = tofile.Substring(0, tofile.Length - 1);
                 if (rFile.Length > 0)

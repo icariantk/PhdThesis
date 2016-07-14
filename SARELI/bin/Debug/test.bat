@@ -6,6 +6,6 @@ echo "Kernel.ptx actualizado"
 echo "Iniciando pruebas"
 echo "------------------------"
 echo "Cuda:"
-sarely -in test.tfa -r1 .75 -r2 .375 -i 5 -s testa.txt -ptx kernel.ptx -r 3,4
+sareli -in test.tfa -r1 .75 -r2 .375 -i 5 -s testa.txt -ptx kernel.ptx -r 3,4
 echo "Serial:"
-sarely -in test.tfa -r1 .75 -r2 .375 -i 5 -s testa.txt -r 3,4
+sareli -in test.tfa -r1 .75 -r2 .375 -i 5 -s testa.txt -r 3,4
