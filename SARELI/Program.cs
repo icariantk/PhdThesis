@@ -6262,7 +6262,7 @@ namespace SARELI
             Console.WriteLine("  │                   ADDITIONALLY TO THE DEFAULT OUTPUT FILE WITH THE       │");
             Console.WriteLine("  │                   HIGHEST COLUMN SCORE, A FILE WITH THE HIGHEST          │");
             Console.WriteLine("  │                   SUM OF PAIRS SCORE CAN ALSO BE OUTPUT, CONTAINING      │");
-            Console.WriteLine("  │                   \"MaxSP\" IN THE FILENAME GENERATED, INSTEAD OF \"MaxC\"   │");
+            Console.WriteLine("  │                   \"MaxSP\" IN THE FILENAME GENERATED, INSTEAD OF \"MaxC\".  │");
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │              -ptx cudaKernel                                             │");
             Console.WriteLine("  │                   PATH FOR THE CUDAKERNEL FILE TO USE AS ACCELERATOR.    │");
