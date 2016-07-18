@@ -6212,9 +6212,9 @@ namespace SARELI
             Console.WriteLine("  │     BELOW.                                                               │");
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │       THE DEFAULT OUTPUT IS A FILE IN FASTA FORMAT WITH THE ALIGNMENT    │");
-            Console.WriteLine("  │     CORRESPONGING TO THE HIGHEST COLUMN SCORE FOUND. THE NAME OF THE     │");
+            Console.WriteLine("  │     CORRESPONDING TO THE HIGHEST COLUMN SCORE FOUND. THE NAME OF THE     │");
             Console.WriteLine("  │     OUTPUT FILE IS AUTOMATICALLY GENERATED STARTING WITH THE PREFIX      │");
-            Console.WriteLine("  │     “SARELI_MaxCS_”, FOLLOWED BY \"R\" AND THE BEST RADIOUS FOUND FOR      │");
+            Console.WriteLine("  │     “SARELI_MaxCS_”, FOLLOWED BY \"R\" AND THE BEST RADIUS FOUND FOR       │");
             Console.WriteLine("  │     THE RANGE PROVIDED, AND ENDING WITH THE NAME OF THE ORIGINAL FILE    │");
             Console.WriteLine("  │     WITH THE FASTA EXTENSION                                             │");
             Console.WriteLine("  │     (e.g. Sareli_MaxCS_R3_originalfilename.fasta).                       │");
@@ -6244,7 +6244,7 @@ namespace SARELI
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │              -r XX,YY                                                    │");
             Console.WriteLine("  │                   THIS PARAMETER SEARCHES FROM RADIUS VALUE XX TO YY     │");
-            Console.WriteLine("  │                   (WITH YY>XX ) FOR THE BEST ALIGNMENT.                  │");
+            Console.WriteLine("  │                   (WITH YY>XX AND XX>1) FOR THE BEST ALIGNMENT.                  │");
             Console.WriteLine("  │                   (DEFAULTS TO 3 IF NOT PROVIDED).                       │");
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │              -r1 .XX                                                     │");
@@ -6258,9 +6258,11 @@ namespace SARELI
             Console.WriteLine("  │              -in FILENAME                                                │");
             Console.WriteLine("  │                   PATH FOR THE FILE WITH THE PROTEIN SEQUENCES TO ALIGN. │");
             Console.WriteLine("  │                                                                          │");
-            Console.WriteLine("  │              -SP                                                         │");
-            Console.WriteLine("  │                   OUTPUT A FILE WITH THE HIGHEST SUM OF PAIRS SCORE      │");
-            Console.WriteLine("  │                   ALIGNMENT                                              │");
+            Console.WriteLine("  │              -sp                                                         │");
+            Console.WriteLine("  │                   ADDITIONALLY TO THE DEFAULT OUTPUT FILE WITH THE       │");
+            Console.WriteLine("  │                   HIGHEST COLUMN SCORE, A FILE WITH THE HIGHEST          │");
+            Console.WriteLine("  │                   SUM OF PAIRS SCORE CAN ALSO BE OUTPUT, CONTAINING      │");
+            Console.WriteLine("  │                   \"MaxSP\" IN THE FILENAME GENERATED, INSTEAD OF \"MaxC\"   │");
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │              -ptx cudaKernel                                             │");
             Console.WriteLine("  │                   PATH FOR THE CUDAKERNEL FILE TO USE AS ACCELERATOR.    │");
@@ -6323,6 +6325,10 @@ namespace SARELI
                 try
                 {
                     firstRadious = Convert.ToInt32(arg[arg.IndexOf("-r") + 1].Split(',')[0]);
+                    if (firstRadious < 2) {
+                        Help();
+                        return 0;
+                    }
                     lastRadious = Convert.ToInt32(arg[arg.IndexOf("-r") + 1].Split(',')[1]);
                 }
                 catch (Exception E)
