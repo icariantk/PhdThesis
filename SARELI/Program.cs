@@ -1324,32 +1324,37 @@ namespace SARELI
             {
                 for (int y = 1; y != kb; y++)
                 {
-
+                    int temp1 = A.count();
+                    int temp2 = B.count();
+                    int g0 = gap(0);
+                    int g2 = gap(2);
                     
                       int sum = 0;
-                      for (int xx = 0; xx != A.count(); xx++) {
-                        for (int yy = 0; yy != B.count(); yy++)
+                      for (int xx = 0; xx != temp1; xx++)
+                      {
+                          for (int yy = 0; yy != temp2; yy++)
                         {
                             sum += A.sequences[xx][x - 1] != '-' && B.sequences[yy][y - 1] != '-' ? ScoreMatrix[A.sequences[xx][x - 1] - 65][B.sequences[yy][y - 1] - 65] : A.sequences[xx][x - 1] == B.sequences[yy][y - 1] ? gap(0) : gap(2);
                         }
                       }
                     int tl = matrix[x - 1][y - 1] +  sum;;
                     sum = 0;
-                    for (int xx = 0; xx != A.count(); xx++)
+                    for (int xx = 0; xx != temp1; xx++)
                     {
-                        for (int yy = 0; yy != B.count(); yy++)
+                        for (int yy = 0; yy != temp2; yy++)
                         {
-                            sum += A.sequences[xx][x-1] == '-' ? gap(0) : gap(2);
+                            sum += A.sequences[xx][x-1] == '-' ? g0 : g2;
                         }
                     }
 
                     int t = matrix[x][y - 1] + sum;
                     sum = 0;
-                    for (int xx = 0; xx != A.count(); xx++)
+
+                    for (int xx = 0; xx != temp1; xx++)
                     {
-                        for (int yy = 0; yy != B.count(); yy++)
+                        for (int yy = 0; yy != temp2; yy++)
                         {
-                            sum += B.sequences[yy][y-1] == '-' ? gap(0) : gap(2);
+                            sum += B.sequences[yy][y-1] == '-' ? g0 : g2;
                         }
                     }
                     int l = matrix[x - 1][y] + sum;
@@ -6244,8 +6249,8 @@ namespace SARELI
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │              -r XX,YY                                                    │");
             Console.WriteLine("  │                   This parameter searches from radius value XX to YY     │");
-            Console.WriteLine("  │                   (With YY>XX and XX>1) for the best alignment.          │");
-            Console.WriteLine("  │                   (Defaults to 3 if not provided).                       │");
+            Console.WriteLine("  │                   (With YY>XX and XX>0) for the best alignment.          │");
+            Console.WriteLine("  │                   (Defaults to 3 to 10 if not provided).                 │");
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │              -r1 .XX                                                     │");
             Console.WriteLine("  │                   Threshold value for the first refinement method        │");
@@ -6263,6 +6268,7 @@ namespace SARELI
             Console.WriteLine("  │                   HIGHEST COLUMN SCORE, A FILE WITH THE HIGHEST          │".ToLower());
             Console.WriteLine("  │                   SUM OF PAIRS SCORE CAN ALSO BE OUTPUT, CONTAINING      │".ToLower());
             Console.WriteLine("  │                   \"MaxSP\" IN THE FILENAME GENERATED, INSTEAD OF \"MaxC\".  │".ToLower());
+            Console.WriteLine("  │                   (Recommended)                                          │");
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │              -ptx cudaKernel                                             │");
             Console.WriteLine("  │                   Path for the CUDA kernel file to use as accelerator.   │");
@@ -6318,14 +6324,14 @@ namespace SARELI
                     }
                 }
             int firstRadious = 3;
-            int lastRadious = 4;
+            int lastRadious = 10;
 
             if (arg.Contains("-r"))
             {
                 try
                 {
                     firstRadious = Convert.ToInt32(arg[arg.IndexOf("-r") + 1].Split(',')[0]);
-                    if (firstRadious < 2) {
+                    if (firstRadious < 1) {
                         Help();
                         return 0;
                     }
@@ -6575,9 +6581,9 @@ namespace SARELI
                 {
                     tech = "ser";
                 }
-                NHT_2[maxRCS - 3].print(0, -1, false, "Sareli_MaxCS_R" + maxRCS + "_" + file +".fasta");
-                if (sp) { 
-                NHT_2[maxRSP - 3].print(0, -1, false, "Sareli_MaxSP_R" + maxRSP + "_" + file +".fasta");
+                NHT_2[maxRCS - firstRadious].print(0, -1, false, "Sareli_MaxCS_R" + maxRCS + "_" + file + ".fasta");
+                if (sp) {
+                    NHT_2[maxRSP - firstRadious].print(0, -1, false, "Sareli_MaxSP_R" + maxRSP + "_" + file + ".fasta");
                 }
                 tofile = tofile.Substring(0, tofile.Length - 1);
                 if (rFile.Length > 0)
