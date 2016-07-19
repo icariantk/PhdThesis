@@ -6337,7 +6337,7 @@ namespace SARELI
                     }
                     lastRadious = Convert.ToInt32(arg[arg.IndexOf("-r") + 1].Split(',')[1]);
                     lastRadious++;
-                    Console.WriteLine("radio" + lastRadious);
+                    
                 }
                 catch (Exception E)
                 {
