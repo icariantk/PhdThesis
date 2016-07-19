@@ -6336,7 +6336,7 @@ namespace SARELI
                         return 0;
                     }
                     lastRadious = Convert.ToInt32(arg[arg.IndexOf("-r") + 1].Split(',')[1]);
-                    lastRadious++;
+                    lastRadious=lastRadious+1;
                     
                 }
                 catch (Exception E)
