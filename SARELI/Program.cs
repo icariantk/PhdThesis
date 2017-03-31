@@ -360,7 +360,10 @@ namespace SARELI
                             sum += 1;
                         }
                     }
-                    catch (Exception E) {  }
+                    catch (Exception E)
+                    {
+                        Console.WriteLine("Exception:" + E.Message);
+                    }
                 }
             }
             return sum;
@@ -494,6 +497,10 @@ namespace SARELI
             int[] wrongs = new int[n];
             int L = Seqs.sequences[0].Count;
             bool[] flag = new bool[L];
+            bool[][] CompleteFlags=new bool[Seqs.count()][];
+            for(int c=0;c!=Seqs.count();c++){
+                CompleteFlags[c] = new bool[L];
+            }
             int count = 0;
             for (int l = 0; l != wrongs.Length; l++) { wrongs[l] = 0; }
             for (int e = 0; e != prof.Length; e++)
@@ -504,7 +511,11 @@ namespace SARELI
                     if (prof[e].ElementAt(d).Value >= Precision)
                     {
                         flag[e] = true;
+                        CompleteFlags[d][e] = true;
                         count++;
+                    }
+                    else {
+                        CompleteFlags[d][e] = false;
                     }
                 }
             }
@@ -628,7 +639,7 @@ namespace SARELI
             return Seqs;
         }
 
-        public Sequencer refineAlign(Sequencer Seqs, double Precision, int iteraciones, bool cuda=true)
+        public Sequencer refineAlign(Sequencer Seqs, double Precision, int iteraciones, bool cuda = true)
         {
             int original = Seqs.count();
             //Console.WriteLine("\nRefining\n");
@@ -757,10 +768,11 @@ namespace SARELI
                     string s = move.getHeader(c) + "\n" + move.getSequence(c);
                     if (cuda)
                     {
-                        Seqs = refi.alignPSPCUDA(Seqs, new Sequencer(s, false),"blosum62");
+                        Seqs = refi.alignPSPCUDA(Seqs, new Sequencer(s, false), "blosum62");
                     }
-                    else {
-                        Seqs = refi.alignPSP(Seqs, new Sequencer(s, false),"blosum62");
+                    else
+                    {
+                        Seqs = refi.alignPSP(Seqs, new Sequencer(s, false), "blosum62");
                     }
                 }
             }
@@ -1091,7 +1103,7 @@ namespace SARELI
                     }
                 }
             }
-         //   Console.WriteLine("Gaps: " + gap(0) + " " + gap(1) + " " + gap(2) + " en alignPSPCUDA");
+            //   Console.WriteLine("Gaps: " + gap(0) + " " + gap(1) + " " + gap(2) + " en alignPSPCUDA");
             using (CudaContext cntxt = new CudaContext())
             {
                 byte[] buff = null;
@@ -1249,7 +1261,7 @@ namespace SARELI
             aligned = result.Split('|');
 
             Sequencer res = new Sequencer(result, false);
-      //      res.print(0, -1, true);
+            //      res.print(0, -1, true);
             return res;
         }
 
@@ -1262,15 +1274,18 @@ namespace SARELI
         /// <returns></returns>
         public Sequencer alignPSP(Sequencer A, Sequencer B, String submatrix = "SIMPLE")
         {
-//Console.WriteLine("Gaps: " + gap(0) + " " + gap(1) + " " + gap(2)+" en alignPSP");
-            int [][]ScoreMatrix=new int[27][];
+            //Console.WriteLine("Gaps: " + gap(0) + " " + gap(1) + " " + gap(2)+" en alignPSP");
+            int[][] ScoreMatrix = new int[27][];
             for (int c = 0; c != 27; c++)
             {
                 ScoreMatrix[c] = new int[27];
             }
-            if (submatrix.ToUpper()== "BLOSUM62") {
-                for (int x = 0; x != 27; x++) {
-                    for (int y = 0; y != 27; y++) {
+            if (submatrix.ToUpper() == "BLOSUM62")
+            {
+                for (int x = 0; x != 27; x++)
+                {
+                    for (int y = 0; y != 27; y++)
+                    {
                         ScoreMatrix[x][y] = Blosum62[x][y];
                     }
                 }
@@ -1286,7 +1301,8 @@ namespace SARELI
                         {
                             ScoreMatrix[x][y] = 2;
                         }
-                        else {
+                        else
+                        {
                             ScoreMatrix[x][y] = -1;
                         }
                     }
@@ -1328,22 +1344,22 @@ namespace SARELI
                     int temp2 = B.count();
                     int g0 = gap(0);
                     int g2 = gap(2);
-                    
-                      int sum = 0;
-                      for (int xx = 0; xx != temp1; xx++)
-                      {
-                          for (int yy = 0; yy != temp2; yy++)
+
+                    int sum = 0;
+                    for (int xx = 0; xx != temp1; xx++)
+                    {
+                        for (int yy = 0; yy != temp2; yy++)
                         {
                             sum += A.sequences[xx][x - 1] != '-' && B.sequences[yy][y - 1] != '-' ? ScoreMatrix[A.sequences[xx][x - 1] - 65][B.sequences[yy][y - 1] - 65] : A.sequences[xx][x - 1] == B.sequences[yy][y - 1] ? gap(0) : gap(2);
                         }
-                      }
-                    int tl = matrix[x - 1][y - 1] +  sum;;
+                    }
+                    int tl = matrix[x - 1][y - 1] + sum; ;
                     sum = 0;
                     for (int xx = 0; xx != temp1; xx++)
                     {
                         for (int yy = 0; yy != temp2; yy++)
                         {
-                            sum += A.sequences[xx][x-1] == '-' ? g0 : g2;
+                            sum += A.sequences[xx][x - 1] == '-' ? g0 : g2;
                         }
                     }
 
@@ -1354,7 +1370,7 @@ namespace SARELI
                     {
                         for (int yy = 0; yy != temp2; yy++)
                         {
-                            sum += B.sequences[yy][y-1] == '-' ? g0 : g2;
+                            sum += B.sequences[yy][y - 1] == '-' ? g0 : g2;
                         }
                     }
                     int l = matrix[x - 1][y] + sum;
@@ -1407,7 +1423,7 @@ namespace SARELI
             for (int c = 0; c != na; c++) { aligned.addSequence(A.getHeader(c), A.getSequence(c)); }
 
             for (int c = 0; c != nb; c++) { aligned.addSequence(B.getHeader(c), B.getSequence(c)); }
-           // aligned.print(0, -1, true);
+            // aligned.print(0, -1, true);
             return aligned;
         }
 
@@ -1823,7 +1839,6 @@ namespace SARELI
                     }
                 }
                 T++;
-
                 for (int c = 0; c != N; c++)
                 {
                     if (c != indexSmallestX && c != indexSmallestY)
@@ -1953,7 +1968,7 @@ namespace SARELI
         /// </summary>
         /// <param name="all">Sequences to be aligned</param>
         /// <returns></returns>
-        public Sequencer alignByNeighbourJoining(Sequencer all, int ra = 3)
+        public Sequencer alignByNeighbourJoining(Sequencer all, int ra = 3,string file="")
         {
             Sequencer[] allDivided;
             Sequencer[] aligning;
@@ -1999,6 +2014,10 @@ namespace SARELI
             }
             Console.WriteLine();
             */
+            string tofile = "";
+            List<string> arbolito = new List<string>();
+            List<string> arbol= new List<string>();
+            
             int k = N + (worker2.seqToAlign.count() - N);
             int T = N;  //Offset to detect if the tree node is a subnode or original node (Above N, t is a subnode)
             int NN = N; //Number of original nodes
@@ -2041,28 +2060,72 @@ namespace SARELI
                    }
                        */
 
-                Console.WriteLine("merge: " + headers[indexSmallestX] + " and " + headers[indexSmallestY]);
+                //Console.WriteLine("merge: " + headers[indexSmallestX] + " and " + headers[indexSmallestY]);
                 worker2.gap(gap(0), gap(1), gap(2));
+                
                 if (headers[indexSmallestX] >= NN)
                 {
                     if (headers[indexSmallestY] >= NN)
                     {
                         aligning[T - NN] = worker2.alignPSP(aligning[headers[indexSmallestX] - NN], aligning[headers[indexSmallestY] - NN], "simple");
+                        //tofile = "("+tofile.Substring(0,tofile.Length-1)+"):1,";
+                        string txt="";
+                        string txt2="";
+                        for (int c = 0; c != aligning[headers[indexSmallestX] - NN].count(); c++) { txt += aligning[headers[indexSmallestX] - NN].getHeader(c).Substring(1) + "|"; }
+                        for (int c = 0; c != aligning[headers[indexSmallestY] - NN].count(); c++) { txt2 += aligning[headers[indexSmallestY] - NN].getHeader(c).Substring(1) + "|"; }
+                            tofile += "alineando: \n" + txt+"\n con \n"+txt2+"\n\n";
+                            int inx = arbolito.FindIndex(x => x == txt);
+                            int inx2 = arbolito.FindIndex(x => x == txt2);
+                            arbolito.Add(txt + txt2);
+                            arbol.Add("("+arbol[inx] + "," + arbol[inx2]+"):1");
                     }
                     else
                     {
                         aligning[T - NN] = worker2.alignPSP(aligning[headers[indexSmallestX] - NN], allDivided[headers[indexSmallestY]], "simple");
+                        //tofile = "(" + tofile.Substring(0,tofile.Length-1) +","+ allDivided[headers[indexSmallestY]].getHeader(0).Substring(1) + ":1):1,";
+                        string txt = "";
+                        string txt2 = allDivided[headers[indexSmallestY]].getHeader(0).Substring(1) + "|";
+                        for (int c = 0; c != aligning[headers[indexSmallestX] - NN].count(); c++) { txt += aligning[headers[indexSmallestX] - NN].getHeader(c).Substring(1) + "|"; }
+
+                        int inx = arbolito.FindIndex(x => x == txt);
+                        arbolito.Add(txt + txt2);
+                        arbol.Add("(" + arbol[inx] + "," + allDivided[headers[indexSmallestY]].getHeader(0).Substring(1) + ":1):1");
+
+                        tofile += "alineando: \n" + txt + "\n con \n" +  txt2+ "\n\n";
                     }
                 }
                 else
                 {
                     if (headers[indexSmallestY] >= NN)
                     {
+                        
                         aligning[T - NN] = worker2.alignPSP(allDivided[headers[indexSmallestX]], aligning[headers[indexSmallestY] - NN], "simple");
+                        //tofile="("+allDivided[headers[indexSmallestX]].getHeader(0).Substring(1) + ":1,"+tofile.Substring(0,tofile.Length-1)+"):1,";
+
+                        string txt = allDivided[headers[indexSmallestX]].getHeader(0).Substring(1)+"|";
+                        string txt2 = "";
+
+                        for (int c = 0; c != aligning[headers[indexSmallestY] - NN].count(); c++) { txt2 += aligning[headers[indexSmallestY] - NN].getHeader(c).Substring(1) + "|"; }
+                        tofile += "alineando: \n" + txt + "\n con \n" + txt2 + "\n\n";
+                        int inx=arbolito.FindIndex(x=>x==txt2);
+                        arbolito.Add(txt + txt2);
+                        arbol.Add("(" + allDivided[headers[indexSmallestX]].getHeader(0).Substring(1) + ":1," + arbol[inx] + "):1");
+                        
                     }
                     else
                     {
                         aligning[T - NN] = worker2.alignPSP(allDivided[headers[indexSmallestX]], allDivided[headers[indexSmallestY]], "simple");
+                       /* if (tofile != ",") {
+                            tofile += "(" + allDivided[headers[indexSmallestX]].getHeader(0).Substring(1) + ":1," + allDivided[headers[indexSmallestY]].getHeader(0).Substring(1) + ":1):1," ;
+                        } else {
+                            tofile = "(" + allDivided[headers[indexSmallestX]].getHeader(0).Substring(1) + ":1," + allDivided[headers[indexSmallestY]].getHeader(0).Substring(1) + ":1):1,";
+                        }*/
+                        string txt = allDivided[headers[indexSmallestX]].getHeader(0).Substring(1)+"|";
+                        string txt2 = allDivided[headers[indexSmallestY]].getHeader(0).Substring(1) + "|";
+                        tofile += "alineando: \n" + txt + "\n con \n" + txt2 + "\n\n";
+                        arbolito.Add(txt + txt2);
+                        arbol.Add("(" + allDivided[headers[indexSmallestX]].getHeader(0).Substring(1) + ":1," + allDivided[headers[indexSmallestY]].getHeader(0).Substring(1) + ":1):1");
+
                     }
                 }
                 T++;
@@ -2129,6 +2192,13 @@ namespace SARELI
                     }
                 N--;
             }
+            tofile = arbol[arbol.Count - 1]+";";
+            //Console.WriteLine(tofile);
+            //Console.ReadKey();
+            if (file != "") {
+                System.IO.File.WriteAllText(file, tofile);
+            }
+            
             return aligning[NN - 2];
         }
 
@@ -2589,6 +2659,165 @@ namespace SARELI
             return sum;
         }
 
+        public double columnScoreReference(Sequencer seqs, Sequencer reference)
+        {
+            double sum = -1;
+            double sum2 = -1;
+            double tot = 0;
+
+            if (seqs.count() > 0 && reference.count() > 0)
+            {
+                if (reference.sequences.Count > 0 && seqs.sequences.Count == reference.sequences.Count)
+                {
+                    int Nseqs = seqs.sequences.Count;
+                    if (reference.sequences[0].Count > 0 && seqs.sequences[0].Count > 0)
+                    {
+                        for (int c = 0; c != seqs.count(); c++)
+                        {
+                            if (seqs.sequences[c].Count != seqs.sequences[0].Count)
+                            {
+                                Console.WriteLine("Sequences are not aligned");
+                                return -1;
+                            }
+                        }
+                        for (int c = 0; c != reference.count(); c++)
+                        {
+                            if (reference.sequences[c].Count != reference.sequences[0].Count)
+                            {
+                                Console.WriteLine("Reference is not an alignment");
+                                return -1;
+                            }
+                        }
+
+                        sum = 0;
+                        sum2 = 0;
+                        int min = reference.sequences[0].Count < seqs.sequences[0].Count ? reference.sequences[0].Count : seqs.sequences[0].Count;
+                        for (int d = 0; d != min; d++)
+                        {
+                            sum = 0;
+                            sum2 = 0;
+                            for (int e = 0; e != Nseqs; e++)
+                            {
+                                if (reference.sequences[0].ElementAt(d) == reference.sequences[e].ElementAt(d))
+                                {
+                                    sum++;
+                                }
+                            }
+                            for (int e = 0; e != Nseqs; e++)
+                            {
+                                if (seqs.sequences[0].ElementAt(d) == seqs.sequences[e].ElementAt(d))
+                                {
+                                    sum2++;
+                                }
+                            }
+                            /*if (sum == Nseqs) { Console.WriteLine("Se encontro una columna alineada en la referencia en la posición: "+d); }
+                            if (sum2 == Nseqs) { Console.WriteLine("Se encontro una columna alineada en las seq en la posición: " + d); }*/
+                            if (sum == Nseqs && sum2 == sum)
+                            {
+                                tot++;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Reference and sequences are not matched");
+                        return -1;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Reference and sequences are not matched");
+                    return -1;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No sequences detected");
+                return -1;
+            }
+            return tot / (double)seqs.sequences[0].Count;
+        }
+
+        public double sumOfPairsReference(Sequencer seqs, Sequencer reference)
+        {
+            //Console.WriteLine("Con referencia SPS");
+            double sum = -1;
+            double sum2 = -1;
+            int min = -1;
+            //seqs.print(0, -1, false,"",true);
+            //reference.print(0, -1, false,"",true);
+            //Console.ReadKey();
+            if (seqs.count() > 0 && reference.count() > 0)
+            {
+                if (reference.sequences.Count > 0 && seqs.sequences.Count == reference.sequences.Count)
+                {
+                    int Nseqs = seqs.sequences.Count;
+                    if (reference.sequences[0].Count > 0 && seqs.sequences[0].Count > 0)
+                    {
+                        sum = 0;
+                        sum2 = 0;
+                        min = reference.sequences[0].Count < seqs.sequences[0].Count ? reference.sequences[0].Count : seqs.sequences[0].Count;
+                        for (int d = 0; d != min; d++)
+                        {
+                            for (int c = 0; c != Nseqs; c++)
+                            {
+                                for (int e = 0; e != Nseqs; e++)
+                                {
+                                    if (c != e)
+                                    {
+                                        //if (seqs.sequences[c].ElementAt(d) != '-' && reference.sequences[e].ElementAt(d) != '-')
+                                       // {
+                                            if (seqs.sequences[c].ElementAt(d) == reference.sequences[e].ElementAt(d))
+                                            {
+                                                sum++;
+                                            }
+                                       // }
+                                    }
+                                }
+                            }
+                        }
+                        for (int d = 0; d != reference.sequences[0].Count; d++)
+                        {
+                            for (int c = 0; c != Nseqs; c++)
+                            {
+                                for (int e = 0; e != Nseqs; e++)
+                                {
+                                    if (c != e)
+                                    {
+                                     //   if (reference.sequences[c].ElementAt(d) != '-' && reference.sequences[e].ElementAt(d) != '-')
+                                     //   {
+                                            if (reference.sequences[c].ElementAt(d) == reference.sequences[e].ElementAt(d))
+                                            {
+                                                sum2++;
+                                            }
+                                       // }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Reference or sequences are not valid");
+                        return -1;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Reference or sequences are not valid");
+                    return -1;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Reference or sequences are not valid");
+                return -1;
+            }
+            Console.WriteLine("refcount=" + reference.sequences[0].Count + " sqcount=" + seqs.sequences[0].Count + " min=" + min + " sum=" + sum + " sum2=" + sum2 + " div:" + (sum / sum2));
+            
+            return sum / sum2;
+        }
+
         /// <summary>
         /// Score function using a substitution matrix [matrixSub] for pairwise comparison or blank matrixSub for
         /// penalty of S(Letter, dash)=-2, S(Different Letters)=-1, S(Same letters)=1 , S(dashes)=0
@@ -2762,29 +2991,27 @@ namespace SARELI
             int nb = B.count();
             if (x > -1 && y > -1)
             {
-               
-                    for (int i = 0; i != na; i++)
+                for (int i = 0; i != na; i++)
+                {
+                    for (int j = 0; j != nb; j++)
                     {
-                        for (int j = 0; j != nb; j++)
+                        if (A.sequences[i][x] != '-' && B.sequences[j][y] != '-')
                         {
-                            if (A.sequences[i][x] != '-' && B.sequences[j][y] != '-')
+                            sum += scoreMatrix[A.sequences[i][x] - 65][B.sequences[j][y] - 65];
+                        }
+                        else
+                        {
+                            if (A.sequences[i][x] == B.sequences[j][y])
                             {
-                                sum += scoreMatrix[A.sequences[i][x] - 65][B.sequences[j][y] - 65];
+                                sum += gap(0);
                             }
                             else
                             {
-                                if (A.sequences[i][x] == B.sequences[j][y])
-                                {
-                                    sum += gap(0);
-                                }
-                                else
-                                {
-                                    sum += gap(2);
-                                }
+                                sum += gap(2);
                             }
                         }
                     }
-                
+                }
             }
             else
             {
@@ -3297,7 +3524,7 @@ namespace SARELI
                         {
                             while (sr.Peek() >= 0)
                             {
-                                String line = sr.ReadLine().ToUpper();
+                                String line = sr.ReadLine();
                                 if (line != "")
                                 {
                                     if (line.Length > 0)
@@ -3329,7 +3556,7 @@ namespace SARELI
                                             {
                                                 if (line.Substring(0, 1) != ";" && line != "")
                                                 {
-                                                    incSeq += line;
+                                                    incSeq += line.ToUpper();
                                                 }
                                             }
                                         }
@@ -3351,7 +3578,7 @@ namespace SARELI
             }
             else
             {
-                String[] lines = input.ToUpper().Split('\n');
+                String[] lines = input.Split('\n');
                 for (int c = 0; c != lines.Length - 1; c++)
                 {
                     if (lines[c].Length > 0)
@@ -3523,13 +3750,26 @@ namespace SARELI
             else { return -1; }
         }
 
+        public void reOrder(Sequencer order)
+        {
+            List<List<char>> seqs = new List<List<char>>();
+            List<string> heads = new List<string>();
+            for (int c = 0; c != order.headers.Count; c++)
+            {
+                seqs.Add(sequences[headers.FindIndex(x => x.Contains(order.headers[c]))]);
+                heads.Add(order.headers[c]);
+            }
+            sequences = seqs;
+            headers = heads;
+        }
+
         /// <summary>
         /// Print into the console the data stored in the Sequencer
         /// </summary>
         /// <param name="offset">Number of sequences to skip printing from index 0</param>
         /// <param name="maximum">Number of sequences to print</param>
         /// <param name="onlySeq">Flag to print only sequence, or print header plus sequence</param>
-        public void print(int offset = 0, int maximum = -1, bool onlySeq = false, string pathIfToFile = "")
+        public void print(int offset = 0, int maximum = -1, bool onlySeq = false, string pathIfToFile = "",bool onlyHeader=false)
         {
             if (pathIfToFile != "")
             {
@@ -3580,7 +3820,14 @@ namespace SARELI
                         }
                         else
                         {
-                            Console.WriteLine(getHeader(c) + "\n" + getSequence(c));
+                            if (onlyHeader)
+                            {
+                                Console.WriteLine(getHeader(c) + "\n");
+                                
+                            }
+                            else {
+                                Console.WriteLine(getHeader(c) + "\n" + getSequence(c));
+                            }
                         }
                     }
                     else
@@ -3623,7 +3870,6 @@ namespace SARELI
     /// </summary>
     internal class ZProgram
     {
-
         public static Dictionary<string, int> fill()
         {
             Dictionary<string, int> radios = new Dictionary<string, int>();
@@ -6185,7 +6431,6 @@ namespace SARELI
 
         private static void Help()
         {
-            
             Console.WriteLine("     ┌───────────────────────────────────────────────────────────────────┐     ");
             Console.WriteLine("     │   Sequence Alignment by Radial Evaluation of Local Interactions   │     ");
             Console.WriteLine("     │                             SARELI                                │     ");
@@ -6297,6 +6542,7 @@ namespace SARELI
             //if (Path.GetExtension(args[c]).ToUpper() == ".FASTA" || Path.GetExtension(args[c]).ToUpper() == ".TFA")
             // if (!File.Exists("muscle_" + file + ".fasta"))
             List<string> arg = new List<string>();
+            string reference = "";
             string rFile = ""; //Output file (-s option)
             double r1 = 0;   //First refinement threshold (-r1 option)
             double r2 = 0;   //First refinement threshold (-r1 option)
@@ -6305,24 +6551,25 @@ namespace SARELI
             bool test = false;
             string cudaKernelFileName = "";
             arg = args.ToList<string>();
-            for (int c = 0; c != arg.Count; c++) {
+            for (int c = 0; c != arg.Count; c++)
+            {
                 arg[c] = arg[c].ToLower();
             }
 
-                if (arg.Contains("-ptx"))
+            if (arg.Contains("-ptx"))
+            {
+                try
                 {
-
-                    try
-                    {
-                        cudaKernelFileName = arg[arg.IndexOf("-ptx") + 1];
-                        useCuda = true;
-                    }
-                    catch (Exception E)
-                    {
-                        Help();
-                        return 0;
-                    }
+                    cudaKernelFileName = arg[arg.IndexOf("-ptx") + 1];
+                    useCuda = true;
                 }
+                catch (Exception E)
+                {
+                    Help();
+                    Console.WriteLine("Exception:" + E.Message);
+                    return 0;
+                }
+            }
             int firstRadious = 3;
             int lastRadious = 11;
 
@@ -6331,17 +6578,18 @@ namespace SARELI
                 try
                 {
                     firstRadious = Convert.ToInt32(arg[arg.IndexOf("-r") + 1].Split(',')[0]);
-                    if (firstRadious < 1) {
+                    if (firstRadious < 1)
+                    {
                         Help();
                         return 0;
                     }
                     lastRadious = Convert.ToInt32(arg[arg.IndexOf("-r") + 1].Split(',')[1]);
-                    lastRadious=lastRadious+1;
-                    
+                    lastRadious = lastRadious + 1;
                 }
                 catch (Exception E)
                 {
                     Help();
+                    Console.WriteLine("Exception:" + E.Message);
                     return 0;
                 }
             }
@@ -6359,13 +6607,33 @@ namespace SARELI
                 catch (Exception E)
                 {
                     Help();
+                    Console.WriteLine("Exception:" + E.Message);
                     return 0;
                 }
             }
 
             if (arg.Contains("-t"))
             {
-                   test = true;
+                test = true;
+            }
+            bool prep = false;
+            if (arg.Contains("-prep"))
+            {
+                prep= true;
+            }
+
+            if (arg.Contains("-ref"))
+            {
+                try
+                {
+                    reference = arg[arg.IndexOf("-ref") + 1];
+                }
+                catch (Exception E)
+                {
+                    Help();
+                    Console.WriteLine("Exception:" + E.Message);
+                    return 0;
+                }
             }
 
             if (arg.Contains("-i"))
@@ -6377,17 +6645,19 @@ namespace SARELI
                 catch (Exception E)
                 {
                     Help();
+                    Console.WriteLine("Exception:" + E.Message);
                     return 0;
                 }
             }
 
             try
             {
-                file = Path.GetFileNameWithoutExtension(fileName);
+                file = Path.GetFileNameWithoutExtension(fileName).ToUpper();
             }
             catch (Exception E)
             {
                 Help();
+                Console.WriteLine("Exception:" + E.Message);
                 return 1;
             }
 
@@ -6396,10 +6666,12 @@ namespace SARELI
                 try
                 {
                     rFile = arg[arg.IndexOf("-s") + 1];
+                    //  Console.WriteLine(rFile);
                 }
                 catch (Exception E)
                 {
                     Help();
+                    Console.WriteLine("Exception:" + E.Message);
                     return 0;
                 }
             }
@@ -6413,6 +6685,7 @@ namespace SARELI
                 catch (Exception E)
                 {
                     Help();
+                    Console.WriteLine("Exception:" + E.Message);
                     return 0;
                 }
             }
@@ -6425,6 +6698,7 @@ namespace SARELI
                 catch (Exception E)
                 {
                     Help();
+                    Console.WriteLine("Exception:" + E.Message);
                     return 0;
                 }
             }
@@ -6450,24 +6724,36 @@ namespace SARELI
 
                 header += "File,";
                 tofile += file + ",";
-                int maxRefCS = 0;
-                int maxRefSP = 0;
-                int maxRSP = 0;
-                int maxRCS = 0;
-                int maxRSP_cs = 0;
-                int maxRCS_sp = 0;
+                double maxRefCS = 0;
+                double maxRefSP = 0;
+                double maxRSP = 0;
+                double maxRCS = 0;
+                double maxRSP_cs = 0;
+                double maxRCS_sp = 0;
 
                 string path2 = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Substring(8));
                 Dictionary<string, int> radios = new Dictionary<string, int>();
                 List<string> skipping = new List<string>();
 
                 double refi = r1;
+                Console.WriteLine("Aligning: = " + fileName);
+                if (prep)
+                {
+                    StreamWriter res = new StreamWriter("doGuide.bat", true);
+                    res.Write("muscle -in \"" + fileName + "\" -out \"" + fileName.Substring(0, fileName.IndexOf('.')).Replace("\\in", "\\outco")+".fasta\"" + "\n");
+                    res.Close();
+                }
+                if (prep)
+                {
+                    StreamWriter res = new StreamWriter("doTests.sh", true);
+                    res.Write("qscore -test ./" + file.ToLower() + ".fasta\"" + " -ref ../ref/" + file.ToLower() + ".tfa\n");
+                    res.Close();
+                }
 
                 for (int k = firstRadious; k != lastRadious; k++)
                 {
-                    Console.WriteLine("Aligning with R = " + k);
-
                     worker.gap(-2, -5, -4);
+
                     if (useCuda)
                     {
                         a.Reset();
@@ -6484,6 +6770,7 @@ namespace SARELI
                             catch (Exception E)
                             {
                                 Console.WriteLine("Too many sequences aligning at once, next try using " + (n * n) + " threads");
+                                Console.WriteLine("Exception:" + E.Message);
                             }
                             n -= 6;
                         }
@@ -6516,14 +6803,14 @@ namespace SARELI
                         tofile += String.Format("{0:0}", nowScore) + ",";
                         if (nowScore > maxRefSP || k == firstRadious)
                         {
-                            maxRefSP = (int)nowScore;
+                            maxRefSP = nowScore;
                             maxRSP = k;
-                            maxRSP_cs = (int)worker.columnScore(NHT_2[k - firstRadious]);
+                            maxRSP_cs = worker.columnScore(NHT_2[k - firstRadious]);
                         }
                         nowScore = worker.columnScore(NHT_2[k - firstRadious]);
                         if (nowScore > maxRefCS || k == firstRadious)
                         {
-                            maxRefCS = (int)nowScore;
+                            maxRefCS = nowScore;
                             maxRCS_sp = t;
                             maxRCS = k;
                         }
@@ -6535,7 +6822,20 @@ namespace SARELI
                     {
                         a.Reset();
                         a.Start();
-                        NHT_2[k - firstRadious] = worker.alignByNeighbourJoining(all, k);
+                        NHT_2[k - firstRadious] = worker.alignByNeighbourJoining(all, k, fileName.Substring(0, fileName.IndexOf('.')) + "_" + k + ".phy");
+                        if (prep)
+                        {
+                            StreamWriter res = new StreamWriter("doGuide.bat", true);
+                            res.Write("muscle -usetree \"" + fileName.Substring(0, fileName.IndexOf('.')).Replace("\\in", "\\outgt") + "_" + k + ".phy\" " + "-in \"" + fileName + "\" -out \"" + fileName.Substring(0, fileName.IndexOf('.')).Replace("\\in", "\\outco") + "_" + k + ".fasta\"" + "\n");
+                            res.Close();
+                        }
+                        if (prep)
+                        {
+                            StreamWriter res = new StreamWriter("doTests.sh", true);
+                            res.Write("qscore -test ./"+file+ "_" + k + ".fasta\"" + " -ref ../ref/" + file.ToLower() + ".tfa\n");
+                            res.Close();
+                        }
+
                         a.Stop();
                         header += "Time radio:" + k + ",";
                         tofile += a.ElapsedMilliseconds + ",";
@@ -6553,19 +6853,40 @@ namespace SARELI
 
                         NHT_2[k - firstRadious] = worker.refineAlign2(temp, r2);
                         header += "SP radio:" + k + ",";
-                        nowScore = new Aligner(NHT_2[k - firstRadious]).sumOfPairs();
+
+                        if (reference == "")
+                        {
+                            nowScore = new Aligner(NHT_2[k - firstRadious]).sumOfPairs();
+                        }
+                        else
+                        {
+                            NHT_2[k - firstRadious].reOrder(new Sequencer(reference, true));
+                            nowScore = worker.sumOfPairsReference(NHT_2[k - firstRadious], new Sequencer(reference, true));
+                        }
+
                         int t = (int)nowScore;
-                        tofile += String.Format("{0:0}", nowScore) + ",";
+                        tofile += String.Format("{0:0.00}", nowScore) + ",";
                         if (nowScore > maxRefSP || k == firstRadious)
                         {
-                            maxRefSP = (int)nowScore;
+                            maxRefSP = nowScore;
                             maxRSP = k;
-                            maxRSP_cs = (int)worker.columnScore(NHT_2[k - firstRadious]);
+                            maxRSP_cs = worker.columnScore(NHT_2[k - firstRadious]);
                         }
-                        nowScore = worker.columnScore(NHT_2[k - firstRadious]);
+
+                        if (reference == "")
+                        {
+                            
+                            nowScore = worker.columnScore(NHT_2[k - firstRadious]);
+                        }
+                        else
+                        {
+                            NHT_2[k - firstRadious].reOrder(new Sequencer(reference, true));
+                            nowScore = worker.columnScoreReference(NHT_2[k - firstRadious], new Sequencer(reference, true));
+                        }
+
                         if (nowScore > maxRefCS || k == firstRadious)
                         {
-                            maxRefCS = (int)nowScore;
+                            maxRefCS = nowScore;
                             maxRCS_sp = t;
                             maxRCS = k;
                         }
@@ -6583,10 +6904,20 @@ namespace SARELI
                 {
                     tech = "ser";
                 }
-                NHT_2[maxRCS - firstRadious].print(0, -1, false, "Sareli_MaxCS_R" + maxRCS + "_" + file + ".fasta");
-                if (sp) {
-                    NHT_2[maxRSP - firstRadious].print(0, -1, false, "Sareli_MaxSP_R" + maxRSP + "_" + file + ".fasta");
+                
+                
+                 NHT_2[(int)maxRCS - (int)firstRadious].reOrder(new Sequencer(fileName, true));
+
+                NHT_2[(int)maxRCS - (int)firstRadious].print(0, -1, false, "Sareli_MaxCS_R" + (int)maxRCS + "_" + file + ".fasta");
+
+
+                if (sp)
+                {
+                    NHT_2[(int)maxRSP - (int)firstRadious].reOrder(new Sequencer(fileName, true));
+                    NHT_2[(int)maxRSP - (int)firstRadious].print(0, -1, false, "Sareli_MaxSP_R" + (int)maxRSP + "_" + file + ".fasta");
                 }
+                
+                
                 tofile = tofile.Substring(0, tofile.Length - 1);
                 if (rFile.Length > 0)
                     if (!File.Exists(path2 + "\\" + rFile))
@@ -6604,16 +6935,33 @@ namespace SARELI
                         res.Close();
                     }
             }
-            else {
+            else
+            {
                 Aligner worker = new Aligner(new Sequencer(fileName, true));
                 string path2 = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Substring(8));
                 header += "File,";
                 tofile += file + ",";
-                
+
                 header += "SP,";
-                int nowScore = worker.sumOfPairs();
+
+                double nowScore = 0;
+                if (reference == "")
+                {
+                    nowScore = worker.sumOfPairs();
+                }
+                else
+                {
+                    nowScore = worker.sumOfPairsReference(new Sequencer(fileName, true), new Sequencer(reference, true));
+                }
                 tofile += String.Format("{0:0}", nowScore) + ",";
-                nowScore = (int)worker.columnScore(new Sequencer(fileName, true));
+                if (reference == "")
+                {
+                    nowScore = worker.columnScore(new Sequencer(fileName, true));
+                }
+                else
+                {
+                    nowScore = worker.columnScoreReference(new Sequencer(fileName, true), new Sequencer(reference, true));
+                }
                 header += "CS,";
                 tofile += String.Format("{0:0}", nowScore) + ",";
                 tofile = tofile.Substring(0, tofile.Length - 1);
@@ -6636,7 +6984,8 @@ namespace SARELI
                         res.Close();
                     }
                 }
-                else {
+                else
+                {
                     Console.WriteLine(header);
                     Console.WriteLine(tofile);
                 }
