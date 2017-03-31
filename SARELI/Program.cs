@@ -6440,7 +6440,7 @@ namespace SARELI
             Console.WriteLine("     │                  Advisor: Dr. Arturo Chavoya Peña                 │     ");
             Console.WriteLine("     ├───────────────────────────────────────────────────────────────────┤     ");
             Console.WriteLine("     │                  MIT License, Copyright (c) 2016                  │     ");
-            Console.WriteLine("     │                  Version:        1.11.00002                       │     ");
+            Console.WriteLine("     │                  Version:        1.2.0000                       │     ");
             Console.WriteLine("     └───────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("  ┌──────────────────────────────────────────────────────────────────────────┐");
             Console.WriteLine("  │    Welcome to the multiple sequence alignment software implementation    │");
