@@ -6440,7 +6440,7 @@ namespace SARELI
             Console.WriteLine("     │                  Advisor: Dr. Arturo Chavoya Peña                 │     ");
             Console.WriteLine("     ├───────────────────────────────────────────────────────────────────┤     ");
             Console.WriteLine("     │                  MIT License, Copyright (c) 2016                  │     ");
-            Console.WriteLine("     │                  Version:        1.2.0000                       │     ");
+            Console.WriteLine("     │                  Version:        1.2.0030                         │     ");
             Console.WriteLine("     └───────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("  ┌──────────────────────────────────────────────────────────────────────────┐");
             Console.WriteLine("  │    Welcome to the multiple sequence alignment software implementation    │");
@@ -6461,17 +6461,13 @@ namespace SARELI
             Console.WriteLine("  │       For a description of all the options, see the man page section     │");
             Console.WriteLine("  │     BELOW.                                                               │".ToLower());
             Console.WriteLine("  │                                                                          │");
-            Console.WriteLine("  │       The default output is a file in fasta format with the alignment    │");
+            Console.WriteLine("  │       The default output is a file in phy format with the guide tree     │");
             Console.WriteLine("  │     CORRESPONDING TO THE HIGHEST COLUMN SCORE FOUND. THE NAME OF THE     │".ToLower());
-            Console.WriteLine("  │     OUTPUT FILE IS AUTOMATICALLY GENERATED STARTING WITH THE PREFIX      │".ToLower());
-            Console.WriteLine("  │     “SARELI_MaxCS_”, FOLLOWED BY \"R\" AND THE BEST RADIUS FOUND FOR       │".ToLower());
-            Console.WriteLine("  │     THE RANGE PROVIDED, AND ENDING WITH THE NAME OF THE ORIGINAL FILE    │".ToLower());
-            Console.WriteLine("  │     WITH THE FASTA EXTENSION                                             │".ToLower());
-            Console.WriteLine("  │     (e.g. Sareli_MaxCS_R3_originalfilename.fasta).                       │".ToLower());
+            Console.WriteLine("  │     OUTPUT FILE IS AUTOMATICALLY GENERATED STARTING WITH THE NAME        │".ToLower());
+            Console.WriteLine("  │     OF THE ORIGINAL FILE, FOLLOWED BY AN UNDERSCORE AND THE RADIOUS      │".ToLower());
+            Console.WriteLine("  │     OF THE RANGE PROVIDED, ENDING WITH THE PHY EXTENSION.                │".ToLower());
+            Console.WriteLine("  │     (e.g. originalfilename_3.PHY).                                       │".ToLower());
             Console.WriteLine("  │                                                                          │");
-            Console.WriteLine("  │        Optionally, a file with the highest sum of pairs score can also   │");
-            Console.WriteLine("  │     BE OUTPUT BY SPECIFYING THE -sp FLAG. IN BOTH CASES, A FILE WITH     │".ToLower());
-            Console.WriteLine("  │     SCORES CAN BE OUTPUT WHEN THE -s OPTION IS SPECIFIED.                │".ToLower());
             Console.WriteLine("  └──────────────────────────────────────────────────────────────────────────┘\n\n");
             Console.WriteLine("  ┌──────────────────────────────────────────────────────────────────────────┐");
             Console.WriteLine("  │                                Man page                                  │");
@@ -6500,6 +6496,10 @@ namespace SARELI
             Console.WriteLine("  │              -r1 .XX                                                     │");
             Console.WriteLine("  │                   Threshold value for the first refinement method        │");
             Console.WriteLine("  │                   (Defaults to .75 if not provided).                     │");
+            Console.WriteLine("  │                                                                          │");
+            Console.WriteLine("  │              -a                                                          │");
+            Console.WriteLine("  │                   Align using progressive and Needleman-Wunsch           │");
+            Console.WriteLine("  │                   Algorithm                                              │");
             Console.WriteLine("  │                                                                          │");
             Console.WriteLine("  │              -r2 .XX                                                     │");
             Console.WriteLine("  │                   Threshold value for the second refinement method       │");
@@ -6549,13 +6549,17 @@ namespace SARELI
             bool sp = false;
             bool useCuda = false;
             bool test = false;
+            bool align_flag = false;
             string cudaKernelFileName = "";
             arg = args.ToList<string>();
             for (int c = 0; c != arg.Count; c++)
             {
                 arg[c] = arg[c].ToLower();
             }
-
+            if (arg.Contains("-a"))
+            {
+                align_flag = true;
+            }
             if (arg.Contains("-ptx"))
             {
                 try
@@ -6907,17 +6911,17 @@ namespace SARELI
                 
                 
                  NHT_2[(int)maxRCS - (int)firstRadious].reOrder(new Sequencer(fileName, true));
-
+                 if (align_flag) { 
                 NHT_2[(int)maxRCS - (int)firstRadious].print(0, -1, false, "Sareli_MaxCS_R" + (int)maxRCS + "_" + file + ".fasta");
 
-
+                 
                 if (sp)
                 {
                     NHT_2[(int)maxRSP - (int)firstRadious].reOrder(new Sequencer(fileName, true));
                     NHT_2[(int)maxRSP - (int)firstRadious].print(0, -1, false, "Sareli_MaxSP_R" + (int)maxRSP + "_" + file + ".fasta");
                 }
-                
-                
+
+                 
                 tofile = tofile.Substring(0, tofile.Length - 1);
                 if (rFile.Length > 0)
                     if (!File.Exists(path2 + "\\" + rFile))
@@ -6934,6 +6938,7 @@ namespace SARELI
                         tofile = "";
                         res.Close();
                     }
+                 }
             }
             else
             {
