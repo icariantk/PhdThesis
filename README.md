@@ -3,3 +3,6 @@ Multiple Sequence Alignment tool: SARELI
 
 Latest SARELI executable file:
  https://raw.githubusercontent.com/icariantk/SARELI/master/SARELI/bin/Debug/SARELI.exe
+
+Article in Current Bioinformatics:
+ https://goo.gl/X2xAes
